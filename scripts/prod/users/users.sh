@@ -1,7 +1,7 @@
 #!/bin/bash
 
-API="${API_ORIGIN:-http://localhost:4741}"
-URL_PATH="/examples"
+API="${API_ORIGIN:-https://burger-joint-p2.herokuapp.com}"
+URL_PATH="/users"
 curl "${API}${URL_PATH}" \
   --include \
   --request GET \
