@@ -1,7 +1,7 @@
 #!/bin/bash
 
 API="${API_ORIGIN:-https://burger-joint-p2.herokuapp.com}"
-URL_PATH="/sign-up"
+URL_PATH="/sign-in"
 
 # curl "${API}${URL_PATH}" \
 #   --include \
@@ -11,10 +11,8 @@ URL_PATH="/sign-up"
 #     "credentials": {
 #       "email": "'"${EMAIL}"'",
 #       "password": "'"${PASSWORD}"'",
-#       "password_confirmation": "'"${PASSWORD}"'"
 #     }
 #   }'
-
 
   curl "${API}${URL_PATH}" \
     --include \
@@ -27,6 +25,5 @@ URL_PATH="/sign-up"
         "password_confirmation": "two"
       }
     }'
-
 
 echo

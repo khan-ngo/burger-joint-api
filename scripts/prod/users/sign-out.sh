@@ -1,6 +1,6 @@
 #!/bin/bash
 
-API="${API_ORIGIN:-http://https://burger-joint-p2.herokuapp.com}"
+API="${API_ORIGIN:-https://burger-joint-p2.herokuapp.com}"
 URL_PATH="/sign-out"
 curl "${API}${URL_PATH}/${ID}" \
   --include \
