@@ -1,1 +1,0 @@
-\copy ingredients(name,unit) FROM 'data/ingredients.csv' WITH (FORMAT csv, HEADER true)
