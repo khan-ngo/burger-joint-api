@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class TasksController < ApplicationController
-  # class TasksController < ProtectedController
+  class TasksController < ProtectedController
   before_action :set_task, only: [:show, :update, :destroy]
 
   ####### GET #######
@@ -46,8 +45,7 @@ class TasksController < ApplicationController
     head :no_content
   end
 
-  ####### private #######
-  private
+    private
 
   def set_task
     # @task = Task.find(params[:id])
