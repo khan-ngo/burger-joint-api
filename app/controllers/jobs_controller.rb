@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-class JobsController < ApplicationController
+class JobsController < ProtectedController
   before_action :set_job, only: [:show, :update, :destroy]
 
   # GET /jobs
   def index
     @jobs = Job.all
+    # @jobs = current_user.tasks
 
     render json: @jobs
   end
@@ -44,11 +45,12 @@ class JobsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_job
-      @job = Job.find(params[:id])
+      # @job = Job.find(params[:id])
+      @job = current_user.jobs.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
   def job_params
-      params.require(:job).permit(:task, :completed)
+    params.require(:job).permit(:task, :completed, :user_id)
   end
 end
