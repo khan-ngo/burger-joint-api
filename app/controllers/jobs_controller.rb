@@ -5,8 +5,7 @@ class JobsController < ProtectedController
 
   # GET /jobs
   def index
-    @jobs = Job.all
-    # @jobs = current_user.tasks
+    @jobs = current_user.jobs
 
     render json: @jobs
   end
@@ -18,7 +17,7 @@ class JobsController < ProtectedController
 
   # POST /jobs
   def create
-    @job = Job.new(job_params)
+    @job = current_user.jobs.build(job_params)
 
     if @job.save
       render json: @job, status: :created, location: @job
@@ -45,12 +44,11 @@ class JobsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_job
-      # @job = Job.find(params[:id])
       @job = current_user.jobs.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
   def job_params
-    params.require(:job).permit(:task, :completed, :user_id)
+    params.require(:job).permit(:task, :completed)
   end
 end
