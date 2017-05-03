@@ -1,1 +1,0 @@
-\copy tasks(item) FROM 'tasks.csv' WITH (FORMAT csv, HEADER true)
