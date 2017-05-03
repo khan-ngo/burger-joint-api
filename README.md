@@ -1,85 +1,47 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# rails-api-template
+## Projet Objective
+Build and test my custom API. Create a working application with two backend resources (on postgres) having a (one-to-many) relationship, using the cusom API. The API will be hosted on a heroku account.
 
-A template for starting projects with `rails-api`. Includes authentication.
+ Mission accepted!
 
-At the beginning of each cohort, update the versions in [`Gemfile`](Gemfile).
+API-Repo: https://github.com/kqngo/burger-joint-api
+Heroku: https://burger-joint-p2.herokuapp.com/
 
-## Dependencies
+Client-repo: https://github.com/kqngo/burger-joint-client
+Applicaiton: https://kqngo.github.io/burger-joint-client/
 
-Install with `bundle install`.
+### ERD
+![p2_erd](https://cloud.githubusercontent.com/assets/26236941/25646407/0f7e9dfe-2f86-11e7-92bf-1987a2c8e9e8.JPG)
 
--   [`rails-api`](https://github.com/rails-api/rails-api)
--   [`rails`](https://github.com/rails/rails)
--   [`active_model_serializers`](https://github.com/rails-api/active_model_serializers)
--   [`ruby`](https://www.ruby-lang.org/en/)
--   [`postgres`](http://www.postgresql.org)
-
-Until Rails 5 is released, this template should follow the most recent released
-version of Rails 4, as well as track `master` branches for `rails-api` and
-`active_model_serializers`.
+## rails-api
+My custom API derives from General Assembly's rails-api. It can be [Download] and installed. Please note that the dependencies and Gemfile have been pre-installed during install-fest, which was part of WDI's orientation.
 
 ## Installation
-
 1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory.
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Move into the new project and `git init`.
-1.  Install dependencies with `bundle install`.
-1.  Rename your app module in `config/application.rb` (change
+2.  Unzip and rename the template directory.
+3.  Empty [`README.md`](README.md) and fill with your own content.
+4.  Move into the new project and `git init`.
+5.  Install dependencies with `bundle install`.
+6.  Rename your app module in `config/application.rb` (change
     `RailsApiTemplate`).
-1.  Rename your project database in `config/database.yml` (change
+7.  Rename your project database in `config/database.yml` (change
     `'rails-api-template'`).
-1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rake secret`).
-1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
+8.  Create a `.env` for sensitive settings (`touch .env`).
+9.  Generate new `development` and `test` secrets (`bundle exec rake secret`).
+10.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
     respectively.
-1.  In order to make requests to your deployed API, you will need to set
+11.  In order to make requests to your deployed API, you will need to set
     `SECRET_KEY_BASE` in the environment of the production API (using `heroku
     config:set` or the Heroku dashboard).
-1.  In order to make requests from your deployed client application, you will
+12.  In order to make requests from your deployed client application, you will
     need to set `CLIENT_ORIGIN` in the environment of the production API (e.g.
     `heroku config:set CLIENT_ORIGIN https://<github-username>.github.io`).
-1.  Setup your database with `bin/rake db:nuke_pave` or `bundle exec rake
+13.  Setup your database with `bin/rake db:nuke_pave` or `bundle exec rake
     db:nuke_pave`.
-1.  Run the API server with `bin/rails server` or `bundle exec rails server`.
-
-## Structure
-
-This template follows the standard project structure in Rails 4.
-
-`curl` command scripts are stored in [`scripts`](scripts) with names that
-correspond to API actions.
-
-User authentication is built-in.
-
-## Tasks
-
-Developers should run these often!
-
--   `bin/rake routes` lists the endpoints available in your API.
--   `bin/rake test` runs automated tests.
--   `bin/rails console` opens a REPL that pre-loads the API.
--   `bin/rails db` opens your database client and loads the correct database.
--   `bin/rails server` starts the API.
--   `scripts/*.sh` run various `curl` commands to test the API. See below.
-
-<!-- TODO -   `rake nag` checks your code style. -->
-<!-- TODO -   `rake lint` checks your code for syntax errors. -->
-
-## API
-
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
-
-Scripts are included in [`scripts`](scripts) to test built-in actions. Add your
-own scripts to test your custom API. As an alternative, you can write automated
-tests in RSpec to test your API.
+14.  Run the API server with `bin/rails server` or `bundle exec rails server`.
 
 ### Authentication
-
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
 | POST   | `/sign-up`             | `users#signup`    |
@@ -87,197 +49,23 @@ tests in RSpec to test your API.
 | PATCH  | `/change-password/:id` | `users#changepw`  |
 | DELETE | `/sign-out/:id`        | `users#signout`   |
 
-#### POST /sign-up
 
-Request:
+### Resources
+#### Rails-Heroku Setup Guide
+https://github.com/ga-wdi-boston/rails-heroku-setup-guide
 
-```sh
-curl http://localhost:4741/sign-up \
-  --include \
-  --request POST \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'",
-      "password_confirmation": "'"${PASSWORD}"'"
-    }
-  }'
+#### Deploy to heroku
+```
+git checkout master
+git merge my-feature # merge your working code
+git push # update GitHub
+git push heroku master # update heroku
 ```
 
-```sh
-EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-up.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "ava@bob.com"
-  }
-}
-```
-
-#### POST /sign-in
-
-Request:
-
-```sh
-curl http://localhost:4741/sign-in \
-  --include \
-  --request POST \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'"
-    }
-  }'
-```
-
-```sh
-EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-in.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "ava@bob.com",
-    "token": "BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f"
-  }
-}
-```
-
-#### PATCH /change-password/:id
-
-Request:
-
-```sh
-curl --include --request PATCH "http://localhost:4741/change-password/$ID" \
-  --header "Authorization: Token token=$TOKEN" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "passwords": {
-      "old": "'"${OLDPW}"'",
-      "new": "'"${NEWPW}"'"
-    }
-  }'
-```
-
-```sh
-ID=1 OLDPW=hannah NEWPW=elle TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/change-password.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-#### DELETE /sign-out/:id
-
-Request:
-
-```sh
-curl http://localhost:4741/sign-out/$ID \
-  --include \
-  --request DELETE \
-  --header "Authorization: Token token=$TOKEN"
-```
-
-```sh
-ID=1 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/sign-out.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-### Users
-
-| Verb | URI Pattern | Controller#Action |
-|------|-------------|-------------------|
-| GET  | `/users`    | `users#index`     |
-| GET  | `/users/1`  | `users#show`      |
-
-#### GET /users
-
-Request:
-
-```sh
-curl http://localhost:4741/users \
-  --include \
-  --request GET \
-  --header "Authorization: Token token=$TOKEN"
-```
-
-```sh
-TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/users.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "users": [
-    {
-      "id": 2,
-      "email": "bob@ava.com"
-    },
-    {
-      "id": 1,
-      "email": "ava@bob.com"
-    }
-  ]
-}
-```
-
-#### GET /users/:id
-
-Request:
-
-```sh
-curl --include --request GET http://localhost:4741/users/$ID \
-  --header "Authorization: Token token=$TOKEN"
-```
-
-```sh
-ID=2 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/user.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 2,
-    "email": "bob@ava.com"
-  }
-}
-```
 
 ### Reset Database without dropping
 
-This is not a task developers should run often, but it is sometimes necessary.
+Helpful command to get you out of a bind.
 
 **locally**
 
@@ -292,7 +80,45 @@ bin/rake db:migrate db:seed db:examples
 heroku run rake db:migrate VERSION=0
 heroku run rake db:migrate db:seed db:examples
 ```
+## Heroku Command Reference
 
+A full list of Heroku commands can be access by running `heroku --help`; below
+are some of the more common ones.
+
+|                Commands                |                                                 Behavior                                                 |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+|           `heroku apps:info`           |                                  Get info about ALL of our Heroku apps.                                  |
+| `heroku apps:info --app {name_of_app}` |                                  Get info about a specific Heroku app.                                   |
+| `heroku apps:open --app {name_of_app}` |            Open any given Heroku app (other than the one we're currently working with.)             |
+|             `heroku logs`              |                                   Logs from the currently running app.                                   |
+|              `heroku ps`               |                              Processes running in your heroku application.                               |
+|           `heroku releases`            |      Each time you deploy to heroku you are creating a "release". This command shows all releases.       |
+|            `heroku pg:info`            | Access Postgres from within Heroku and show the heroku plan, connections, pg version, data size, tables. |
+|            `heroku pg:psql`            |                                      ... and open a `psql` console.                                      |
+|            `heroku run ...`            |                                    Run a program from within Heroku.                                     |
+|            `heroku config`             |                           Environmental variables in your current Heroku app.                            |
+|            `heroku config:set SECRET_KEY_BASE=$(rake secret)`            |                                    Set Secret Key                                     |
+|            `heroku config:set SECRET_TOKEN=$(rake secret)`            |                                    Set TOKEN                                     |
+|            `heroku config:set CLIENT_ORIGIN=https://yourgithubname.github.io`            |                                    Set CLIENT_ORIGIN                                     |
+|            `heroku apps:rename newname (optional)`            |                                    Rename heroku app name (entirely optional)                                     |
+|            `heroku restart`            |                                    restart heroku                                     |
+|            `heroku open`            |                                    Open your heroku app in default browser                                     |
+|            `heroku --help`            |                                    Displays a heroku CLI usage summary.                                     |
+
+## Heroku Troubleshooting
+
+These are the commands required for deploying to heroku with rails. If your heroku deployment isn't working as expected, review these steps carefully.
+- `heroku create`
+- `git push heroku master`
+- `heroku run rake db:migrate`
+- `heroku run rake db:seed`
+- `heroku config:set SECRET_KEY_BASE=$(rake secret)`
+- `heroku config:set SECRET_TOKEN=$(rake secret)`
+- `heroku config:set CLIENT_ORIGIN=https://yourgithubname.github.io`
+- `heroku apps:rename newname` (optional)
+- `heroku restart`
+- `heroku open`
+-
 ## [License](LICENSE)
 
 1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
