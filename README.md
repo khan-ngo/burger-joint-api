@@ -12,7 +12,7 @@ Client-repo: https://github.com/kqngo/burger-joint-client
 Applicaiton: https://kqngo.github.io/burger-joint-client/
 
 ### ERD
-![p2_erd](https://cloud.githubusercontent.com/assets/26236941/25646407/0f7e9dfe-2f86-11e7-92bf-1987a2c8e9e8.JPG)git 
+![p2_erd](https://cloud.githubusercontent.com/assets/26236941/25646407/0f7e9dfe-2f86-11e7-92bf-1987a2c8e9e8.JPG)
 
 ## rails-api
 My custom API derives from General Assembly's rails-api. It can be [Download] and installed. Please note that the dependencies and Gemfile have been pre-installed during install-fest, which was part of WDI's orientation.
