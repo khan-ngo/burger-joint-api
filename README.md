@@ -3,11 +3,8 @@
 ## Projet Objective
 Build and test my custom API. Create a working application with two backend resources (on postgres) having a (one-to-many) relationship, using the cusom API. The API will be hosted on a heroku account.
 
-<<<<<<< HEAD
- ### Mission accepted!
-=======
  Mission accepted!
->>>>>>> Add README
+
 
 API-Repo: https://github.com/kqngo/burger-joint-api
 Heroku: https://burger-joint-p2.herokuapp.com/
@@ -15,17 +12,11 @@ Heroku: https://burger-joint-p2.herokuapp.com/
 Client-repo: https://github.com/kqngo/burger-joint-client
 Applicaiton: https://kqngo.github.io/burger-joint-client/
 
-<<<<<<< HEAD
-### My ERD
-![p2_erd](https://cloud.githubusercontent.com/assets/26236941/25646407/0f7e9dfe-2f86-11e7-92bf-1987a2c8e9e8.JPG)
-
-## Rails-API
-=======
 ### ERD
 ![p2_erd](https://cloud.githubusercontent.com/assets/26236941/25646407/0f7e9dfe-2f86-11e7-92bf-1987a2c8e9e8.JPG)
 
 ## rails-api
->>>>>>> Add README
+
 My custom API derives from General Assembly's rails-api. It can be [Download] and installed. Please note that the dependencies and Gemfile have been pre-installed during install-fest, which was part of WDI's orientation.
 
 ## Installation
@@ -61,7 +52,17 @@ My custom API derives from General Assembly's rails-api. It can be [Download] an
 | DELETE | `/sign-out/:id`        | `users#signout`   |
 
 
-### SQL CRUD
+
+### Tasks
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| GET    | `/tasks`              | `tasks#index`    |
+| GET    | `/tasks/:id`          | `tasks#show`     |
+| POST   | `/tasks`              | `tasks#create`   |
+| PATCH  | `/tasks/:id`          | `tasks#update`   |
+| DELETE | `/tasks/:id`          | `tasks#destroy`  |
+
+### CRUD Actions
 
 **[CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)**
 _(create, read, update and delete)_, SQL, HTTP, and Rails Controller action.
@@ -72,6 +73,7 @@ _(create, read, update and delete)_, SQL, HTTP, and Rails Controller action.
 | Read   | SELECT | GET    | index/show |
 | Update | UPDATE | PATCH  | update     |
 | Delete | DELETE | DELETE | destroy    |
+
 
 ### Resources
 #### Rails-Heroku Setup Guide
@@ -84,7 +86,6 @@ git merge my-feature # merge your working code
 git push # update GitHub
 git push heroku master # update heroku
 ```
-
 
 ### Reset Database without dropping
 

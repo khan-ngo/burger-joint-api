@@ -44,7 +44,7 @@ class JobsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_job
-      @job = current_user.jobs.find(params[:id])
+    @job = current_user.jobs.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
