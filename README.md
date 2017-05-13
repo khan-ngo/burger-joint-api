@@ -12,7 +12,7 @@ Client-repo: https://github.com/kqngo/burger-joint-client
 Applicaiton: https://kqngo.github.io/burger-joint-client/
 
 ### ERD
-![p2_erd](https://cloud.githubusercontent.com/assets/26236941/25646407/0f7e9dfe-2f86-11e7-92bf-1987a2c8e9e8.JPG)git 
+![p2_erd](https://cloud.githubusercontent.com/assets/26236941/25646407/0f7e9dfe-2f86-11e7-92bf-1987a2c8e9e8.JPG)git
 
 ## rails-api
 My custom API derives from General Assembly's rails-api. It can be [Download] and installed. Please note that the dependencies and Gemfile have been pre-installed during install-fest, which was part of WDI's orientation.
@@ -50,6 +50,29 @@ My custom API derives from General Assembly's rails-api. It can be [Download] an
 | DELETE | `/sign-out/:id`        | `users#signout`   |
 
 
+
+### Tasks
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| GET    | `/tasks`              | `tasks#index`    |
+| GET    | `/tasks/:id`          | `tasks#show`     |
+| POST   | `/tasks`              | `tasks#create`   |
+| PATCH  | `/tasks/:id`          | `tasks#update`   |
+| DELETE | `/tasks/:id`          | `tasks#destroy`  |
+
+### CRUD Actions
+
+**[CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)**
+_(create, read, update and delete)_, SQL, HTTP, and Rails Controller action.
+
+| CRUD   | SQL    | HTTP   | action     |
+|:-------|:-------|:-------|:-----------|
+| Create | INSERT | POST   | create     |
+| Read   | SELECT | GET    | index/show |
+| Update | UPDATE | PATCH  | update     |
+| Delete | DELETE | DELETE | destroy    |
+
+
 ### Resources
 #### Rails-Heroku Setup Guide
 https://github.com/ga-wdi-boston/rails-heroku-setup-guide
@@ -61,7 +84,6 @@ git merge my-feature # merge your working code
 git push # update GitHub
 git push heroku master # update heroku
 ```
-
 
 ### Reset Database without dropping
 
